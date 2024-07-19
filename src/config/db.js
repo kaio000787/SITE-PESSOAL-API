@@ -13,7 +13,7 @@ const initDatabase = async () => {
   await db.query(`
             CREATE TABLE IF NOT EXISTS experiencias   (
                 id SERIAL PRIMARY KEY,
-                titulo VARCHAR(255) NOT NULL,
+                title VARCHAR(255) NOT NULL,
                 tipo VARCHAR(255) NOT NULL,
                 descricao TEXT NOT NULL,
                 "anoInicio" INT NOT NULL,
