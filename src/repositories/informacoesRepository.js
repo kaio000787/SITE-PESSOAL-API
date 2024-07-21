@@ -2,7 +2,7 @@ const { pool } = require("../config/db");
 
 exports.getInformacoes = async () => {
     const result = await pool.query("SELECT * FROM imformacoes");
-    return result.rows;
+    return result.rows[0];
 }
 
 exports.createInformacoes = async (informacoes) => {
