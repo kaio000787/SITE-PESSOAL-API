@@ -5,7 +5,7 @@ const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+  ssl: process.env.NODE_ENV === 'production' ? true : false
 });
 
 const initDatabase = async () => {
@@ -13,7 +13,7 @@ const initDatabase = async () => {
   await db.query(`
             CREATE TABLE IF NOT EXISTS experiencias   (
                 id SERIAL PRIMARY KEY,
-                title VARCHAR(255) NOT NULL,
+                titulo VARCHAR(255) NOT NULL,
                 tipo VARCHAR(255) NOT NULL,
                 descricao TEXT NOT NULL,
                 "anoInicio" INT NOT NULL,
@@ -32,7 +32,7 @@ const initDatabase = async () => {
 
   await db.query(`
             CREATE TABLE IF NOT EXISTS imformacoes   (
-                id INT PRIMARY KEY,
+                id SERIAL PRIMARY KEY,
                 foto VARCHAR(255) NOT NULL,
                 nome VARCHAR(255) NOT NULL,
                 cargo VARCHAR(255) NOT NULL,
