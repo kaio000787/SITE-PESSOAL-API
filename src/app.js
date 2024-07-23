@@ -1,4 +1,5 @@
 require('./config/dotenv');
+require('express-async-errors');
 
 const express = require('express');
 const {  initDatabase} = require('./config/db');
@@ -16,6 +17,12 @@ const port = process.env.APP_PORT || 5000;
 
 const app = express();
 initDatabase();
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send({'Error': err.message});
+});
+
 app.use(express.json());        
 app.use(cors());
 
